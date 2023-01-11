@@ -1,0 +1,67 @@
+MainWidget
+
+
+<MainWidget>:
+    TopWidget:
+
+
+
+
+
+<TopWidget>:
+    session_time : session_time
+    break_time : break_time
+    num_sessions : num_sessions
+    orientation:'vertical'
+    padding: 50
+    spacing: 50
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, .5
+        padding: root.width * .01
+        TopInput:
+            id: num_sessions
+            hint_text: '# O F  S E S S I O N S'
+        TopInput:
+            id: session_time
+            hint_text: 'S E S S I O N  T I M E'
+        TopInput:
+            id: break_time
+            hint_text: 'B R E A K  T I M E'
+        Button:
+            text: 'U P D A T E  T I M E R'
+            on_press: root.on_submit()
+    Label:
+        font_size: root.width/3
+        font_name: 'font/DS-DIGI.ttf'
+        text: root.time_string
+        color: root.timer_color
+    GridLayout:
+        rows: 2
+        cols: 3
+        Label:
+            text: ''
+        Label:
+            text: root.status_text
+        Label:
+            text: ''
+        TopButton:
+            text: "S T A R T"
+            on_press: root.on_timer_start()
+        TopButton:
+            text: "S T O P"
+            on_press: root.on_timer_stop()
+        TopButton:
+            text: "B R E A K"
+            on_press: root.start_break()
+
+<TopButton@Button>:
+    size_hint: .5, .5
+
+
+
+
+<TopInput>
+    background_color: 1,1,1,0.1
+    foreground_color: 1,1,1,1
+    input_filter: 'int'
